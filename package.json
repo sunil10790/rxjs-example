@@ -1,0 +1,21 @@
+{
+  "name": "rxjs-example",
+  "version": "1.0.0",
+  "description": "An example project for learning fundamentals of RxJS",
+  "scripts": {
+    "start": "webpack-dev-server --watch --inline",
+    "postinstall": "typings install"
+  },
+  "author": "Sunil Kumar C",
+  "license": "ISC",
+  "dependencies": {
+    "rxjs": "^5.4.1"
+  },
+  "devDependencies": {
+    "ts-loader": "^2.1.0",
+    "typescript": "^2.3.4",
+    "typings": "^2.1.1",
+    "webpack": "^2.6.1",
+    "webpack-dev-server": "^2.4.5"
+  }
+}
