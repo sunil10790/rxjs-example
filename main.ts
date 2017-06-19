@@ -1,23 +1,22 @@
-import { Observable, Observer } from 'rxjs';
+import { Observable } from 'rxjs';
 
-let numberArray = [1, 6, 10, 37];
-let source = Observable.create(
-    observer => {
-        let index = 0;
-        let produceValue = () => {
-            observer.next(numberArray[index++]);
-            if(index < numberArray.length){
-                setTimeout(produceValue, 2000);
-            } else {
-                observer.complete();
-            }
-        };
-        produceValue();
-    }
-);
+let circleabc = document.getElementById('mouseCircle');
+let source = Observable.fromEvent(document, 'mousemove')
+                       .map( (event: MouseEvent) => {
+                           return {
+                               x: event.clientX,
+                               y: event.clientY
+                           };
+                       })
+                       .delay(300);
+
+let onNext = (value) => {
+    circleabc.style.left = value.x + 'px';
+    circleabc.style.top = value.y + 'px';
+}
 
 source.subscribe(
-    (value) => console.log(`Value: ${value}`),
+    onNext,
     (e) => console.log(`Error: ${e}`),
     () => console.log(`Complete`)
 );
